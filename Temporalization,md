@@ -1,0 +1,46 @@
+# Temporalization
+
+Temporalization in Anchor Modeling is the process of making data time-aware — meaning, every piece of information (attribute or tie) can have a valid time range.
+
+This allows to:
+
+* Track historical changes.
+* Know what was true at any point in time.
+* Avoid overwriting old data.
+
+Think of it as versioning built into your data model, without losing normalization or creating redundant tables.
+
+| Concept                       | Meaning                                                                                                         |
+| ----------------------------- | --------------------------------------------------------------------------------------------------------------- |
+| **Temporalization**           | Making attributes or ties **time-aware** by storing **valid-from / valid-to**                                   |
+| **Benefits**                  | History tracking, auditability, reconstructing past states                                                      |
+| **Anchor Modeling Principle** | All attributes and ties can be temporal; anchors themselves are generally non-temporal (identity never changes) |
+
+## Unary Temporalization (Single Temporal Dependency)
+
+Only the attribute itself is temporalized.
+
+Its value changes independently of other attributes.
+
+There is no dependency on other attributes’ validity periods.
+
+## Binary Temporalization (Dual Temporal Dependency)
+
+One attribute depends on the temporal validity of another attribute (usually a key or foreign reference).
+
+The validity of one attribute is tied to the other’s valid period.
+
+## Concurrent Reliance Temporalization (Multiple Dependent Attributes)
+
+Multiple attributes are dependent on each other’s temporal validity, forming a group of co-temporal attributes.
+
+All attributes in the group share the same valid-from / valid-to period.
+
+Changes to any attribute in the group trigger a new record for all attributes simultaneously.
+
+
+| Type                    | Dependency                           | When to Use                                   |
+| ----------------------- | ------------------------------------ | -------------------------------------------------- | --------------------------------------------- |
+| **Unary**               | Independent                          |  Changes independently                         |
+| **Binary**              | Depends on one other temporal entity  | Attribute validity tied to tie/anchor         |
+| **Concurrent Reliance** | Depends on multiple attributes      | Attributes must always be consistent together |
