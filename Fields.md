@@ -20,3 +20,9 @@ A datarange defines what type of data a value (in an attribute, tie, or knot) ca
 It’s the domain or data type associated with a concept.
 
 Every attribute and knot in Anchor Modeling has a datarange.
+
+## Arrtibute
+
+Arrtibute is a column name
+
+## 
